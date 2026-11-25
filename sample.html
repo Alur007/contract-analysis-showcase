@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample legal assessment</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --border: rgba(11, 11, 11, 0.10); --accent: #2a78d6;
+    --critical: #d03b3b; --warning: #fab219; --good: #0ca30c; --ok-ink: #006300;
+    --quote: #f3f2ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --border: rgba(255, 255, 255, 0.10); --accent: #3987e5; --ok-ink: #0ca30c;
+      --quote: #222220;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 32px 0 8px; }
+  .eyebrow { margin: 0 0 4px; color: var(--ink-2); font-size: 13px; }
+  h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.2; font-weight: 650; }
+  .lead { margin: 0; color: var(--ink-2); max-width: 70ch; }
+  .lead a, .toc a, footer a { color: var(--accent); }
+  .notice { margin: 16px 0 0; padding: 10px 14px; border-left: 3px solid var(--warning); background: var(--surface); color: var(--ink-2); font-size: 14px; border-radius: 0 8px 8px 0; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+  .tile .label { color: var(--ink-2); font-size: 13px; }
+  .tile .value { font-size: 22px; font-weight: 600; margin-top: 2px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .section-head { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; align-items: flex-start; }
+  h2 { margin: 0; font-size: 19px; line-height: 1.3; font-weight: 600; }
+  .en { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+  h3 { margin: 18px 0 4px; font-size: 13px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; }
+  p { margin: 0 0 10px; }
+  blockquote { margin: 0; padding: 10px 14px; background: var(--quote); border-left: 3px solid var(--grid); border-radius: 0 8px 8px 0; font-size: 14px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  .trace { margin: 6px 0 0; font-size: 13px; color: var(--ink-2); }
+  .trace.ok { color: var(--ok-ink); }
+  .refs { font-variant-numeric: tabular-nums; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .badge .icon { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; color: #fff; font-size: 12px; font-weight: 700; }
+  .badge.critical .icon { background: var(--critical); }
+  .badge.warning .icon { background: var(--warning); color: #0b0b0b; }
+  .badge.good .icon { background: var(--good); }
+  .badge-sub { font-weight: 400; color: var(--ink-2); }
+  .toc { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; margin: 0 0 16px; }
+  details summary { cursor: pointer; color: var(--ink-2); }
+  pre { white-space: pre-wrap; font: 13px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 12px 0 0; }
+  .muted { color: var(--muted); }
+  footer { color: var(--muted); font-size: 13px; padding: 8px 0 40px; }
+  @media (max-width: 560px) { h1 { font-size: 23px; } .card { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Contract analysis evaluation</p>
+  <h1>Sample legal assessment</h1>
+  <p class="lead">A fictional Austrian residential rental contract, to which the Mietrechtsgesetz applies in full, analysed by the application with gpt-5.6-sol and legal references from the knowledge graph. The assessment below is the application's output, unedited and in German, as a user would receive it. See also the <a href="./">evaluation report</a>.</p>
+  <p class="notice">The contract is invented: all parties, addresses and amounts are fictional, and several clauses are deliberately one-sided. This is a portfolio demonstration, not legal advice.</p>
+</header>
+<main>
+  <div class="tiles">
+    <div class="tile"><div class="label">Overall rating</div><div class="value"><span class="badge critical"><span class="icon" aria-hidden="true">!</span>Rot <span class="badge-sub">· high risk</span></span></div></div>
+    <div class="tile"><div class="label">Sections analysed</div><div class="value">6 of 6</div></div>
+    <div class="tile"><div class="label">Quoted passages found in the contract</div><div class="value">57 of 57</div></div>
+    <div class="tile"><div class="label">MRG scope</div><div class="value">Vollanwendung</div></div>
+  </div>
+
+  <section class="card">
+    <div class="section-head"><div><h2>Gesamtbewertung</h2><p class="en">Overall assessment</p></div><span class="badge critical"><span class="icon" aria-hidden="true">!</span>Rot <span class="badge-sub">· high risk</span></span></div>
+    <h3>Gesamtfazit</h3>
+    <p>Rot-Befunde: Mietzahlungs- und Nebenkostenklauseln – m&#246;gliche &#220;berschreitung des zul&#228;ssigen Hauptmietzinses und fehlender Befristungsabschlag nach &#167; 16 MRG, unwirksamer &#220;berpr&#252;fungs- und Minderungsverzicht nach &#167; 16 MRG bzw. &#167; 1096 ABGB, unzul&#228;ssige Kosten&#252;berw&#228;lzungen nach &#167;&#167; 21–24 und 27 MRG, Kautionsregelung entgegen &#167; 16b MRG sowie belastende Verzugs-, Aufrechnungs- und Indexklauseln nach &#167; 879 ABGB und &#167; 6 KSchG. Mietdauer und K&#252;ndigung – m&#246;glicherweise unwirksame dreij&#228;hrige Befristung sowie &#252;berschie&#223;ende Beendigungsrechte nach &#167;&#167; 29, 30 und 33 MRG sowie &#167; 1118 ABGB. Instandhaltung und Reparaturen – Verlagerung gesetzlicher Vermieterpflichten, unwirksamer Investitionsersatzverzicht und undifferenzierte Endrenovierung nach &#167;&#167; 3, 8 und 10 MRG sowie &#167;&#167; 1096, 1097 und 879 ABGB. Gebrauchsrechte – &#252;berschie&#223;ende Berufs-, L&#228;rm-, &#196;nderungs-, Untervermietungs- und Tierhaltungsverbote nach &#167;&#167; 9, 11 und 30 MRG sowie &#167;&#167; 1098 und 879 ABGB. Rechte und Pflichten – zu weites Zutrittsrecht, unverh&#228;ltnism&#228;&#223;ige Vertragsstrafe, umfassendes Aufrechnungsverbot und unbekannte Hausordnung nach &#167; 8 MRG, &#167;&#167; 864a, 879, 1098 und 1336 ABGB sowie &#167; 6 KSchG. Datenschutz und Kommunikation – unvollst&#228;ndige Informationen, zu weit gefasste Datenweitergabe und unwiderrufliche Einwilligung nach Art. 5, 6, 7 Abs. 3 und 13 DSGVO sowie &#167; 1 DSG.<br>Keine Gelb-Befunde wurden identifiziert. Mehrere Bewertungen h&#228;ngen von nicht dokumentierten Umst&#228;nden ab, insbesondere Unternehmereigenschaft der Vermieterseite, Mietzinsberechnung, Verbrauchereigenschaft, technischer Erforderlichkeit einzelner Wartungsintervalle und einer allenfalls gesondert erteilten Datenschutzerkl&#228;rung.<br>Gesamteinsch&#228;tzung: Rot. Bestimmend sind bereits die roten Befunde bei Mietzahlung und Nebenkosten, Mietdauer und K&#252;ndigung sowie Instandhaltung und Reparaturen; sie betreffen mehrfach zwingende Vorschriften des MRG. Die Analyse ist eine vorl&#228;ufige Tatsachenbewertung unter Vorbehalt menschlicher &#220;berpr&#252;fung und keine Rechtsberatung gem&#228;&#223; &#167; 1 RAO. F&#252;r eine verbindliche rechtliche Einsch&#228;tzung: Mietervereinigung oder Rechtsanwalt.</p>
+  </section>
+
+  <nav class="toc" aria-label="Sections">
+<a href="#costs">Mietzahlungs- und Nebenkostenklauseln</a>
+<a href="#terms">Mietdauer und K&#252;ndigungsklauseln</a>
+<a href="#use">Nutzungsklauseln</a>
+<a href="#maintenance">Instandhaltungs- und Reparaturklauseln</a>
+<a href="#duties">Pflichten und Obliegenheiten</a>
+<a href="#privacy">Datenschutz und Privatsph&#228;re</a>
+  </nav>
+
+<section class="card section" id="costs">
+  <div class="section-head">
+    <div><h2>Mietzahlungs- und Nebenkostenklauseln</h2><p class="en">Rent and charges</p></div>
+    <span class="badge critical"><span class="icon" aria-hidden="true">!</span>Rot <span class="badge-sub">· high risk</span></span>
+  </div>
+  <h3>Zusammenfassung</h3>
+  <p>Der Vertrag legt einen Hauptmietzins von 1.050 Euro netto, ein Betriebskostenakonto von 170 Euro und j&#228;hrliche Indexanpassungen fest. Die Zul&#228;ssigkeit der Mieth&#246;he ist mangels Angaben zu Ausstattung, Richtwert, Zu- und Abschl&#228;gen nicht abschlie&#223;end feststellbar. Der gesetzliche Befristungsabschlag ist nicht ausgewiesen; der Verzicht auf Mietzins&#252;berpr&#252;fung ist unwirksam. Mehrere zus&#228;tzlich &#252;berw&#228;lzte Kosten sind keine zul&#228;ssigen Betriebskosten. Weitere erhebliche Risiken bestehen bei einseitiger Wertsicherung, Verzugsfolgen, Mietzinsminderung, Kautionsverzinsung und -r&#252;ckgabe sowie Vertrags- und Bearbeitungsgeb&#252;hren.</p>
+  <h3>Zitat</h3>
+  <blockquote><p>Punkt 4.1: „Der monatliche Mietzins setzt sich aus dem Hauptmietzins, den anteiligen Betriebskosten und der gesetzlichen Umsatzsteuer zusammen:</p>
+<p>Hauptmietzins netto 1.050,00 €<br>Umsatzsteuer 10 % 105,00 €<br>Hauptmietzins brutto 1.155,00 €</p>
+<p>zuz&#252;glich der Betriebskosten-Akontozahlung gem&#228;&#223; Punkt 7.2 von monatlich 170,00 € (inkl. USt).“</p>
+<p>Punkt 4.2: „Die Vertragsparteien erkl&#228;ren &#252;bereinstimmend, dass der vereinbarte Hauptmietzins angemessen ist. Die Mieterseite verzichtet darauf, den Hauptmietzins &#252;berpr&#252;fen zu lassen.“</p>
+<p>Punkt 4.3: „Der Mietzins ist monatlich im Voraus bis zum 3. eines jeden Monats auf das Konto der Vermieterseite zu &#252;berweisen. Ma&#223;geblich ist der Eingang auf dem Konto der Vermieterseite.“</p>
+<p>Punkt 4.4: „Bei Zahlungsverzug schuldet die Mieterseite Verzugszinsen von 9 % pro Jahr sowie f&#252;r jede Mahnung pauschale Mahnspesen von 45,00 € und die Kosten eines Inkassob&#252;ros oder Rechtsanwalts in voller H&#246;he.“</p>
+<p>Punkt 4.5: „Zahlungen der Mieterseite werden unabh&#228;ngig von ihrer Widmung zuerst auf Kosten und Zinsen, dann auf Betriebskosten und zuletzt auf den Hauptmietzins angerechnet.“</p>
+<p>Punkt 4.6: „F&#252;r Zeitr&#228;ume, in denen der Mietgegenstand wegen beh&#246;rdlicher Ma&#223;nahmen, Seuchen, Baustellen im Haus oder in der Nachbarschaft nur eingeschr&#228;nkt ben&#252;tzbar ist, kann keine Mietzinsminderung geltend gemacht werden.“</p>
+<p>Punkt 5.1: „Der Hauptmietzins ist wertgesichert nach dem Verbraucherpreisindex 2020 der Statistik Austria. Ausgangsbasis ist die f&#252;r den Monat des Vertragsabschlusses verlautbarte Indexzahl.“</p>
+<p>Punkt 5.2: „Der Hauptmietzins wird j&#228;hrlich zum 1. J&#228;nner an die Ver&#228;nderung des Index angepasst. Eine Verminderung des Index f&#252;hrt zu keiner Senkung des Hauptmietzinses.“</p>
+<p>Punkt 5.3: „Die Nichteinhebung von Erh&#246;hungsbetr&#228;gen gilt nicht als Verzicht; die Vermieterseite kann nicht eingehobene Erh&#246;hungsbetr&#228;ge f&#252;r die letzten drei Jahre nachfordern.“</p>
+<p>Punkt 6.1: „Die Mieterseite tr&#228;gt den auf den Mietgegenstand entfallenden Anteil an den Betriebskosten und laufenden &#246;ffentlichen Abgaben gem&#228;&#223; &#167;&#167; 21 bis 24 MRG.“</p>
+<p>Punkt 6.2: „Dar&#252;ber hinaus tr&#228;gt die Mieterseite anteilig die Kosten der Hausverwaltung in tats&#228;chlicher H&#246;he, die Kosten der Erneuerung von Fenstern und T&#252;ren der allgemeinen Teile des Hauses sowie eine monatliche Instandhaltungspauschale von 25,00 €.“</p>
+<p>Punkt 6.3: „Der Anteil der Mieterseite an den Betriebskosten bestimmt sich nach dem Verh&#228;ltnis der Nutzfl&#228;che des Mietgegenstandes zur Nutzfl&#228;che aller Mietgegenst&#228;nde des Hauses.“</p>
+<p>Punkt 6.4: „Strom, Gas, Internet, Rundfunkgeb&#252;hren und sonstige Verbrauchskosten des Mietgegenstandes tr&#228;gt die Mieterseite selbst. Sie schlie&#223;t die Bezugsvertr&#228;ge im eigenen Namen ab.“</p>
+<p>Punkt 7.1: „Die Vermieterseite schreibt die Betriebskosten monatlich als gleichbleibenden Akontobetrag vor. Die Jahresabrechnung erfolgt bis 30. Juni des Folgejahres.“</p>
+<p>Punkt 7.2: „Der monatliche Akontobetrag betr&#228;gt derzeit 170,00 € (inkl. USt) und ist gemeinsam mit dem Hauptmietzins zu &#252;berweisen. Ein Guthaben aus der Jahresabrechnung wird mit k&#252;nftigen Akontozahlungen verrechnet.“</p>
+<p>Punkt 12.1: „Die Mieterseite verzichtet darauf, gegen Forderungen der Vermieterseite mit eigenen Forderungen aufzurechnen.“</p>
+<p>Punkt 13.1: „Die Mieterseite &#252;bergibt bei Vertragsunterzeichnung eine Barkaution in H&#246;he von sechs Bruttomonatsmieten, das sind 7.950,00 €.“</p>
+<p>Punkt 13.2: „Die Kaution wird nicht verzinst und dient der Sicherung aller Anspr&#252;che der Vermieterseite aus diesem Vertrag.“</p>
+<p>Punkt 13.3: „Die Vermieterseite gibt die Kaution innerhalb von sechs Monaten nach R&#252;ckgabe des Mietgegenstandes zur&#252;ck, soweit sie nicht f&#252;r Forderungen der Vermieterseite herangezogen wird.“</p>
+<p>Punkt 14.1: „Die Kosten der Vertragserrichtung von 480,00 € sowie eine Bearbeitungsgeb&#252;hr von 150,00 € tr&#228;gt die Mieterseite.“</p></blockquote>
+  <p class="trace ok"><span aria-hidden="true">✓</span> All 24 quoted passages found verbatim in the contract.</p>
+  <h3>Bewertung</h3>
+  <p>Im Vollanwendungsbereich bildet der zul&#228;ssige Hauptmietzins nach MRG &#167;16 die Obergrenze; eine blo&#223;e Erkl&#228;rung seiner Angemessenheit ersetzt die gesetzliche Berechnung nicht. Angaben zur Ausstattungskategorie, zum ma&#223;geblichen Richtwert sowie zu Zu- und Abschl&#228;gen fehlen, weshalb die Zul&#228;ssigkeit von 1.050 Euro netto aus dem Dokument allein nicht festgestellt werden kann. Da das Mietverh&#228;ltnis auf drei Jahre befristet ist, ist der Befristungsabschlag nach MRG &#167;16 zu ber&#252;cksichtigen; weder dessen Einrechnung noch eine Regelung f&#252;r eine sp&#228;tere Umwandlung in ein unbefristetes Verh&#228;ltnis ist erkennbar. Der Verzicht auf die gesetzliche Mietzins&#252;berpr&#252;fung ist nach MRG &#167;16 unwirksam. Die Zusammensetzung aus Hauptmietzins, Betriebskosten und Umsatzsteuer entspricht strukturell MRG &#167;15.</p>
+<p>Die Vorauszahlung bis zum dritten Monatstag ist grunds&#228;tzlich zul&#228;ssig. Die Zugangsklausel verlagert jedoch auch nicht beherrschbare Banklaufzeiten auf die Mieterseite und kann zusammen mit 9 % Verzugszinsen, pauschal 45 Euro je Mahnung sowie uneingeschr&#228;nkt „vollen“ Inkasso- und Rechtsanwaltskosten gr&#246;blich benachteiligend nach ABGB &#167;879 sein. Die Kostenklausel unterscheidet nicht nach Notwendigkeit, Zweckm&#228;&#223;igkeit und angemessenem Verh&#228;ltnis zur Forderung. Auch die von der Widmung unabh&#228;ngige Verrechnung zuerst auf Kosten und Zinsen kann R&#252;ckst&#228;nde beim Hauptmietzins erzeugen und ist deshalb nach ABGB &#167;879 problematisch. Der pauschale Ausschluss jeder Mietzinsminderung widerspricht dem zwingenden Minderungsrecht des ABGB &#167;1096, soweit die Gebrauchseinschr&#228;nkung nicht von der Mieterseite zu vertreten ist. Der allgemeine Aufrechnungsverzicht ist im Verbrauchergesch&#228;ft jedenfalls insoweit unwirksam, als KSchG &#167;6 gesetzliche Gegenforderungen von einem solchen Ausschluss ausnimmt.</p>
+<p>Die Indexierung nach dem VPI 2020 enth&#228;lt zwar Index, Ausgangsbasis und Anpassungszeitpunkt, schlie&#223;t aber jede Senkung aus. Diese asymmetrische Gestaltung und die dreij&#228;hrige r&#252;ckwirkende Nachforderung k&#246;nnen nach ABGB &#167;879 gr&#246;blich benachteiligend sein; au&#223;erdem darf die Wertsicherung die nach MRG &#167;16 zul&#228;ssige Mietzinsobergrenze nicht &#252;berschreiten. Ob und in welchem Umfang die konkrete Anpassung nach den bei Vertragsbeginn 2026 geltenden mietrechtlichen Wertsicherungsregeln zul&#228;ssig ist, l&#228;sst sich ohne Angaben zur Mietzinsart, Ausgangsberechnung und zu den sp&#228;teren Indexwerten nicht abschlie&#223;end bestimmen.</p>
+<p>Die &#220;berw&#228;lzung der in MRG &#167;&#167;21 bis 24 abschlie&#223;end geregelten Betriebskosten, &#246;ffentlichen Abgaben und zul&#228;ssigen Gemeinschaftskosten ist grunds&#228;tzlich m&#246;glich. Verwaltungskosten d&#252;rfen nach MRG &#167;22 jedoch nicht pauschal „in tats&#228;chlicher H&#246;he“ weitergegeben werden, sondern nur im gesetzlichen Umfang. Fenster- und T&#252;rerneuerungen an allgemeinen Teilen sowie eine allgemeine Instandhaltungspauschale geh&#246;ren nicht zum Betriebskostenkatalog des MRG &#167;21; Punkt 6.2 weicht daher zulasten der Mieterseite vom zwingenden Betriebskostenrecht ab. Der Nutzfl&#228;chenschl&#252;ssel entspricht grunds&#228;tzlich MRG &#167;17, sofern keine gesetzlich zul&#228;ssige abweichende Abrechnungseinheit besteht. Individuelle Bezugsvertr&#228;ge f&#252;r Strom, Gas und Internet fallen nicht unter die Betriebskostenabrechnung und sind sachlich getrennt.</p>
+<p>Monatliche Akonti und die Jahresabrechnung bis 30. Juni entsprechen grunds&#228;tzlich MRG &#167;21. Das Guthaben darf allerdings nicht zeitlich unbestimmt zur&#252;ckbehalten werden: Nach MRG &#167;21 ist der Abrechnungssaldo zum gesetzlichen F&#228;lligkeitstermin auszugleichen. Die blo&#223;e Verrechnung mit irgendwann k&#252;nftig anfallenden Akonti ist deshalb zumindest unklar.</p>
+<p>Die Barkaution von 7.950 Euro entspricht rechnerisch sechs Gesamtmonatszahlungen von je 1.325 Euro. Ihre H&#246;he ist nicht automatisch unzul&#228;ssig, bedarf aber eines sachlichen Sicherungsinteresses und kann bei fehlender Rechtfertigung nach ABGB &#167;879 &#252;berm&#228;&#223;ig sein. Der vollst&#228;ndige Verzinsungsausschluss widerspricht MRG &#167;16b, wonach eine Barkaution fruchtbringend zu veranlagen und samt Ertr&#228;gnissen zur&#252;ckzustellen ist. Auch eine generelle R&#252;ckgabefrist von sechs Monaten entspricht nicht MRG &#167;16b: Nach Ende des Mietverh&#228;ltnisses ist die Kaution samt Zinsen unverz&#252;glich zur&#252;ckzustellen, soweit keine berechtigten Forderungen bestehen.</p>
+<p>Die Bearbeitungsgeb&#252;hr von 150 Euro ist mangels ausgewiesener gleichwertiger Gegenleistung als unzul&#228;ssige zus&#228;tzliche Zahlung nach MRG &#167;27 einzustufen. Auch die pauschale &#220;berw&#228;lzung von 480 Euro Vertragserrichtungskosten ist nach MRG &#167;27 problematisch, soweit damit typische Vermieteraufwendungen ohne konkrete, gesondert beauftragte Gegenleistung &#252;berw&#228;lzt werden. Insgesamt enthalten die Kostenklauseln mehrere zwingendem Mietrecht widersprechende Belastungen; dies rechtfertigt die Risikostufe Rot. F&#252;r eine verbindliche rechtliche Einsch&#228;tzung: Mietervereinigung, Rechtsanwalt oder Arbeiterkammer.</p>
+  <h3>Rechtsgrundlage</h3>
+  <p class="refs">MRG &#167;15, MRG &#167;16, MRG &#167;17, MRG &#167;21, MRG &#167;22, MRG &#167;23, MRG &#167;24, MRG &#167;16b, MRG &#167;27, ABGB &#167;879, ABGB &#167;1096, KSchG &#167;6</p>
+</section>
+<section class="card section" id="terms">
+  <div class="section-head">
+    <div><h2>Mietdauer und K&#252;ndigungsklauseln</h2><p class="en">Term and termination</p></div>
+    <span class="badge critical"><span class="icon" aria-hidden="true">!</span>Rot <span class="badge-sub">· high risk</span></span>
+  </div>
+  <h3>Zusammenfassung</h3>
+  <p>Die vereinbarte dreij&#228;hrige Befristung ist bei der als GmbH auftretenden Vermieterseite f&#252;r den ab 1. Februar 2026 geschlossenen Wohnungsmietvertrag voraussichtlich zu kurz und daher nicht durchsetzbar. Das gesetzliche K&#252;ndigungsrecht der Mieterseite nach einem Jahr mit dreimonatiger Frist zum Monatsletzten ist korrekt wiedergegeben. Demgegen&#252;ber k&#246;nnen gelegentliche berufliche Nutzung, jeder L&#228;rmversto&#223; oder jede Form der Untervermietung nicht allein aufgrund der vertraglichen Bezeichnung automatisch eine sofortige Vertragsbeendigung rechtfertigen.</p>
+  <h3>Zitat</h3>
+  <blockquote><p>„2.1 Das Mietverh&#228;ltnis beginnt am 01.02.2026 und wird auf drei Jahre abgeschlossen. Es endet am 31.01.2029, ohne dass es einer Aufk&#252;ndigung bedarf.</p>
+<p>2.2 Die Mieterseite kann das Mietverh&#228;ltnis nach Ablauf eines Jahres unter Einhaltung einer dreimonatigen K&#252;ndigungsfrist jeweils zum Monatsletzten schriftlich aufk&#252;ndigen.</p>
+<p>3.1 Der Mietgegenstand darf nur zu Wohnzwecken verwendet werden. Jede andere Verwendung, insbesondere jede auch nur gelegentliche berufliche Nutzung, wird als K&#252;ndigungsgrund gem&#228;&#223; &#167; 30 Abs 2 Z 13 MRG vereinbart.</p>
+<p>3.3 Die Mieterseite hat in der Wohnung jede L&#228;rmentwicklung zu unterlassen, auch bei Tag. Jeder Versto&#223; gilt als vereinbarter K&#252;ndigungsgrund gem&#228;&#223; &#167; 30 Abs 2 Z 13 MRG.</p>
+<p>10.1 Jede g&#228;nzliche oder teilweise Untervermietung oder sonstige Weitergabe des Mietgegenstandes, entgeltlich oder unentgeltlich, ist untersagt und berechtigt die Vermieterseite zur sofortigen Aufl&#246;sung des Mietverh&#228;ltnisses.“</p></blockquote>
+  <p class="trace ok"><span aria-hidden="true">✓</span> All 5 quoted passages found verbatim in the contract.</p>
+  <h3>Bewertung</h3>
+  <p>Im vorgegebenen Vollanwendungsbereich richtet sich die Befristung nach MRG &#167;29. F&#252;r ab 1. J&#228;nner 2026 geschlossene Wohnungsmietvertr&#228;ge betr&#228;gt die Mindestbefristung bei einer unternehmerisch handelnden Vermieterseite f&#252;nf Jahre. Punkt 2.1 sieht lediglich drei Jahre vor. Da die Vermieterseite als Wohnbau-Verwaltungs-GmbH auftritt, spricht der Vertrag deutlich f&#252;r Unternehmereigenschaft; deren konkrete T&#228;tigkeit und die Zuordnung des Mietvertrags zum Unternehmen k&#246;nnen aus dem Dokument allein jedoch nicht abschlie&#223;end festgestellt werden. Bei Unternehmereigenschaft erf&#252;llt die Befristung MRG &#167;29 nicht und der vereinbarte Endtermin w&#228;re nicht durchsetzbar; das Mietverh&#228;ltnis g&#228;lte dann als unbefristet. Punkt 2.2 entspricht dem zwingenden Recht der Mieterseite aus MRG &#167;29, nach Ablauf eines Jahres unter Einhaltung einer dreimonatigen Frist zum Monatsletzten schriftlich zu k&#252;ndigen. Die Vermieterseite kann das Mietverh&#228;ltnis demgegen&#252;ber gem&#228;&#223; MRG &#167;30 nur aus einem gesetzlich anerkannten wichtigen Grund k&#252;ndigen; die gerichtliche Aufk&#252;ndigung richtet sich nach MRG &#167;33. Vereinbarte K&#252;ndigungsgr&#252;nde nach MRG &#167;30 Abs 2 Z 13 sind nur wirksam, wenn sie f&#252;r die Vermieterseite objektiv wichtig und bedeutsam sowie konkret bestimmt sind. Die pauschale Erfassung jeder gelegentlichen beruflichen Nutzung in Punkt 3.1 und jedes L&#228;rmversto&#223;es einschlie&#223;lich tags&#252;ber in Punkt 3.3 erf&#252;llt diese Voraussetzungen nicht automatisch und erweitert die gesetzlichen K&#252;ndigungsm&#246;glichkeiten unzul&#228;ssig, soweit weder erhebliche Vertragsverletzung noch Unzumutbarkeit vorliegt. Punkt 10.1 erlaubt die sofortige Aufl&#246;sung bei jeder entgeltlichen oder unentgeltlichen, auch nur teilweisen Weitergabe. Das geht &#252;ber die in MRG &#167;30 geregelten K&#252;ndigungsgr&#252;nde und die engen Voraussetzungen einer vorzeitigen Aufl&#246;sung nach ABGB &#167;1118 hinaus; eine blo&#223;e vertragliche Bezeichnung ersetzt weder einen gesetzlichen Aufl&#246;sungsgrund noch das grunds&#228;tzlich erforderliche gerichtliche K&#252;ndigungsverfahren. Wegen der voraussichtlich unwirksamen Befristung und der &#252;berm&#228;&#223;ig weit gefassten Beendigungsrechte liegt ein hohes Mieterrisiko vor. F&#252;r eine verbindliche rechtliche Einsch&#228;tzung: Mietervereinigung, Rechtsanwalt oder Arbeiterkammer.</p>
+  <h3>Rechtsgrundlage</h3>
+  <p class="refs">MRG &#167;29, MRG &#167;30, MRG &#167;33, ABGB &#167;1118</p>
+</section>
+<section class="card section" id="use">
+  <div class="section-head">
+    <div><h2>Nutzungsklauseln</h2><p class="en">Use of the flat</p></div>
+    <span class="badge critical"><span class="icon" aria-hidden="true">!</span>Rot <span class="badge-sub">· high risk</span></span>
+  </div>
+  <h3>Zusammenfassung</h3>
+  <p>Der Vertrag beschr&#228;nkt die Wohnung strikt auf Wohnzwecke, verbietet sogar gelegentliche berufliche Nutzung und jede L&#228;rmentwicklung, bindet an eine erst sp&#228;ter &#252;bermittelte Hausordnung und verlangt f&#252;r s&#228;mtliche Ver&#228;nderungen eine schriftliche Zustimmung. Untervermietung, unentgeltliche Weitergabe und jede Tierhaltung werden ausnahmslos untersagt. Mehrere dieser pauschalen Verbote &#252;berschreiten die im Vollanwendungsbereich des MRG zul&#228;ssigen Beschr&#228;nkungen und verkn&#252;pfen geringf&#252;gige Verst&#246;&#223;e mit unzul&#228;ssig weit gefassten Beendigungsfolgen.</p>
+  <h3>Zitat</h3>
+  <blockquote><p>„3.1 Der Mietgegenstand darf nur zu Wohnzwecken verwendet werden. Jede andere Verwendung, insbesondere jede auch nur gelegentliche berufliche Nutzung, wird als K&#252;ndigungsgrund gem&#228;&#223; &#167; 30 Abs 2 Z 13 MRG vereinbart.</p>
+<p>3.2 Die Mieterseite verpflichtet sich, die Hausordnung einzuhalten. Die Hausordnung wird der Mieterseite nach Vertragsunterzeichnung &#252;bermittelt.</p>
+<p>3.3 Die Mieterseite hat in der Wohnung jede L&#228;rmentwicklung zu unterlassen, auch bei Tag. Jeder Versto&#223; gilt als vereinbarter K&#252;ndigungsgrund gem&#228;&#223; &#167; 30 Abs 2 Z 13 MRG.</p>
+<p>9.1 Jede Ver&#228;nderung des Mietgegenstandes, auch das Anbringen von Bildern, Regalen oder Lampen mittels Bohrungen, bedarf der vorherigen schriftlichen Zustimmung der Vermieterseite.</p>
+<p>10.1 Jede g&#228;nzliche oder teilweise Untervermietung oder sonstige Weitergabe des Mietgegenstandes, entgeltlich oder unentgeltlich, ist untersagt und berechtigt die Vermieterseite zur sofortigen Aufl&#246;sung des Mietverh&#228;ltnisses.</p>
+<p>10.2 Die Haltung von Haustieren jeder Art, auch von Kleintieren, ist untersagt.“</p></blockquote>
+  <p class="trace ok"><span aria-hidden="true">✓</span> All 6 quoted passages found verbatim in the contract.</p>
+  <h3>Bewertung</h3>
+  <p>Der vereinbarte Wohnzweck begrenzt das Gebrauchsrecht nach ABGB &#167;1098 grunds&#228;tzlich wirksam. Die Einordnung jeder auch nur gelegentlichen beruflichen Nutzung als K&#252;ndigungsgrund ist jedoch &#252;berschie&#223;end: Im Vollanwendungsbereich kann eine K&#252;ndigung nur auf einen gesetzlichen Tatbestand des MRG &#167;30 gest&#252;tzt werden; eine Vereinbarung nach MRG &#167;30 Abs 2 Z 13 setzt einen konkret bezeichneten, f&#252;r den Vermieter objektiv wichtigen und bedeutsamen Umstand voraus. Ob eine berufliche T&#228;tigkeit tats&#228;chlich Wohnzweck, Widmung oder schutzw&#252;rdige Interessen beeintr&#228;chtigt, l&#228;sst sich aus dem Vertrag nicht bestimmen. Das absolute Verbot jeder L&#228;rmentwicklung auch tags&#252;ber erfasst unvermeidbare Wohnger&#228;usche und beschr&#228;nkt damit den vertragsgem&#228;&#223;en Gebrauch nach ABGB &#167;1098 unverh&#228;ltnism&#228;&#223;ig. Nicht jeder Versto&#223; bildet ohne R&#252;cksicht auf Art, Intensit&#228;t und Dauer einen K&#252;ndigungsgrund nach MRG &#167;30. Die Hausordnung ist bei Vertragsabschluss inhaltlich unbekannt; ihre Reichweite und Vereinbarkeit mit dem Gebrauchsrecht k&#246;nnen daher nicht abschlie&#223;end beurteilt werden. Eine erst nach Vertragsunterzeichnung bekannt gegebene, ungew&#246;hnlich belastende Regel kann nach ABGB &#167;864a nicht Vertragsbestandteil werden; gr&#246;blich benachteiligende Inhalte k&#246;nnen nach ABGB &#167;879 Abs 3 unwirksam sein. Das Zustimmungserfordernis f&#252;r ausnahmslos jede Ver&#228;nderung kollidiert mit MRG &#167;9, soweit dort angezeigte beziehungsweise privilegierte wesentliche Ver&#228;nderungen unter gesetzlichen Voraussetzungen zu dulden sind; f&#252;r blo&#223; geringf&#252;gige, verkehrs&#252;bliche Befestigungen ist das umfassende Verbot zudem am Gebrauchsrecht nach ABGB &#167;1098 und an ABGB &#167;879 Abs 3 zu messen. Das uneingeschr&#228;nkte Untervermietungs- und Weitergabeverbot weicht von MRG &#167;11 ab: Auf ein vertragliches Untermietverbot kann sich der Vermieter nur bei einem gesetzlichen wichtigen Grund berufen. Eine sofortige Aufl&#246;sung tritt nicht automatisch aufgrund jeder entgeltlichen oder unentgeltlichen Weitergabe ein; ma&#223;geblich bleiben die gesetzlichen Beendigungstatbest&#228;nde des MRG &#167;30. Das Verbot s&#228;mtlicher Haustiere einschlie&#223;lich Kleintieren greift ohne Interessenabw&#228;gung in den &#252;blichen Wohngebrauch nach ABGB &#167;1098 ein und ist als formularm&#228;&#223;iges Totalverbot gr&#246;blich benachteiligend im Sinn des ABGB &#167;879 Abs 3; eine Beschr&#228;nkung kann dagegen bei konkreter Gef&#228;hrdung, Bel&#228;stigung oder &#252;berm&#228;&#223;iger Tierhaltung gerechtfertigt sein. Insgesamt liegen mehrere erhebliche Abweichungen von zwingenden oder einseitig zwingenden Schutzstandards vor. F&#252;r eine verbindliche rechtliche Einsch&#228;tzung: Mietervereinigung, Rechtsanwalt oder Arbeiterkammer.</p>
+  <h3>Rechtsgrundlage</h3>
+  <p class="refs">ABGB &#167;864a, ABGB &#167;879, ABGB &#167;1098, MRG &#167;9, MRG &#167;11, MRG &#167;30</p>
+</section>
+<section class="card section" id="maintenance">
+  <div class="section-head">
+    <div><h2>Instandhaltungs- und Reparaturklauseln</h2><p class="en">Maintenance and repairs</p></div>
+    <span class="badge critical"><span class="icon" aria-hidden="true">!</span>Rot <span class="badge-sub">· high risk</span></span>
+  </div>
+  <h3>Zusammenfassung</h3>
+  <p>Der Vertrag beschr&#228;nkt die Erhaltungspflicht der Vermieterseite auf allgemeine Hausteile, &#252;bertr&#228;gt der Mieterseite aber Wartung, Instandhaltung und sogar Erneuerung nahezu aller Einrichtungen und Leitungen. Zus&#228;tzlich enth&#228;lt er einen Vorausverzicht auf Instandsetzung und Investitionsersatz, eine verschuldensunabh&#228;ngig formulierte Kosten&#252;berw&#228;lzung bei Ersatzvornahmen sowie eine zwingende Ausmal- und Wiederherstellungspflicht. Diese umfassenden Verlagerungen gehen im Vollanwendungsbereich des MRG teilweise &#252;ber die gesetzlich zul&#228;ssigen Mieterpflichten hinaus.</p>
+  <h3>Zitat</h3>
+  <blockquote><p>Punkt 1.4: „Die Mieterseite hat den Mietgegenstand besichtigt und &#252;bernimmt ihn im derzeitigen Zustand. Sie verzichtet auf jede weitere Instandsetzung oder Verbesserung durch die Vermieterseite.“</p>
+<p>Punkt 6.2: „Dar&#252;ber hinaus tr&#228;gt die Mieterseite anteilig die Kosten der Hausverwaltung in tats&#228;chlicher H&#246;he, die Kosten der Erneuerung von Fenstern und T&#252;ren der allgemeinen Teile des Hauses sowie eine monatliche Instandhaltungspauschale von 25,00 €.“</p>
+<p>Punkt 8.1: „Die Vermieterseite erh&#228;lt die allgemeinen Teile des Hauses nach Ma&#223;gabe der gesetzlichen Bestimmungen.“</p>
+<p>Punkt 8.2: „Die Mieterseite hat den Mietgegenstand samt allen mitvermieteten Einrichtungen, insbesondere Einbauk&#252;che, Gastherme, Warmwasserbereiter, Fenster, T&#252;ren sowie Elektro-, Gas- und Wasserleitungen, auf eigene Kosten zu warten, instand zu halten und bei Bedarf zu erneuern.“</p>
+<p>Punkt 8.3: „Die Mieterseite hat die Gastherme j&#228;hrlich auf eigene Kosten durch einen befugten Fachbetrieb &#252;berpr&#252;fen zu lassen und den Pr&#252;fbericht der Vermieterseite unaufgefordert vorzulegen.“</p>
+<p>Punkt 8.4: „Sch&#228;den im Mietgegenstand und an den allgemeinen Teilen des Hauses hat die Mieterseite der Vermieterseite unverz&#252;glich zu melden. F&#252;r Folgesch&#228;den aus einer versp&#228;teten Meldung haftet die Mieterseite.“</p>
+<p>Punkt 8.5: „Kommt die Mieterseite ihren Pflichten nach diesem Punkt nicht nach, kann die Vermieterseite die Arbeiten ohne weitere Ank&#252;ndigung auf Kosten der Mieterseite durchf&#252;hren lassen.“</p>
+<p>Punkt 9.2: „Die Mieterseite verzichtet auf den Ersatz s&#228;mtlicher Aufwendungen und Investitionen in den Mietgegenstand, gleich aus welchem Rechtsgrund, insbesondere auch auf Anspr&#252;che nach &#167; 10 MRG.“</p>
+<p>Punkt 9.3: „Bei Beendigung des Mietverh&#228;ltnisses hat die Mieterseite den Mietgegenstand wei&#223; ausgemalt, fachgerecht gereinigt und in dem Zustand zur&#252;ckzustellen, in dem sie ihn &#252;bernommen hat.“</p></blockquote>
+  <p class="trace ok"><span aria-hidden="true">✓</span> All 9 quoted passages found verbatim in the contract.</p>
+  <h3>Bewertung</h3>
+  <p>Im verbindlich vorgegebenen Vollanwendungsbereich des MRG ist Punkt 8.1 insoweit gesetzeskonform, als die Vermieterseite die allgemeinen Teile nach MRG &#167;3 erhalten muss. Punkt 1.4 kann diese zwingenden Pflichten nicht durch einen pauschalen Vorausverzicht beseitigen; zudem darf ein Verzicht auf Instandsetzung die aus ABGB &#167;1096 folgenden Rechte bei Gebrauchsbeeintr&#228;chtigungen nicht generell ausschlie&#223;en. Punkt 8.2 &#252;berschreitet die Erhaltungs- und Wartungspflicht der Mieterseite nach MRG &#167;8: Zul&#228;ssig sind insbesondere schonende Ben&#252;tzung, Wartung und die Vermeidung von Nachteilen; die uneingeschr&#228;nkte Pflicht zur Instandhaltung und Erneuerung von Gastherme, Warmwasserbereiter, Fenstern, T&#252;ren sowie s&#228;mtlichen Elektro-, Gas- und Wasserleitungen verlagert jedoch auch gesetzliche Vermieterpflichten nach MRG &#167;3 auf die Mieterseite. Gerade die Reparatur oder Erneuerung mitvermieteter W&#228;rmebereitungsger&#228;te f&#228;llt unter MRG &#167;3 und kann nicht mit der laufenden Wartung gleichgesetzt werden. Auch die in Punkt 6.2 vorgesehene &#220;berw&#228;lzung der Erneuerung von Fenstern und T&#252;ren allgemeiner Teile widerspricht dieser gesetzlichen Verantwortungsverteilung. Punkt 8.3 ist hinsichtlich regelm&#228;&#223;iger fachgerechter Thermenwartung grunds&#228;tzlich mit MRG &#167;8 vereinbar; ob ausgerechnet ein j&#228;hrliches Intervall technisch vorgeschrieben oder sachlich notwendig ist, ergibt sich aus dem Vertrag nicht. Punkt 8.4 entspricht dem Grunde nach der gesetzlichen Schadensanzeigepflicht nach MRG &#167;8; eine Haftung f&#252;r Folgesch&#228;den setzt jedoch insbesondere Kausalit&#228;t und zurechenbare versp&#228;tete Meldung voraus, sodass der Wortlaut keine automatische verschuldensunabh&#228;ngige Haftung begr&#252;ndet. Punkt 8.5 &#252;berw&#228;lzt ohne vorherige Ank&#252;ndigung s&#228;mtliche Kosten einer Ersatzvornahme, differenziert aber weder nach tats&#228;chlich bestehender Mieterpflicht noch nach Verschulden, Notwendigkeit und Angemessenheit der Kosten. In dieser Pauschalit&#228;t ist die Klausel nach ABGB &#167;879 problematisch; gesetzliche Vermieterarbeiten k&#246;nnen au&#223;erdem nach MRG &#167;6 durchgesetzt werden und werden dadurch nicht zu Mieterarbeiten. Punkt 9.2 enth&#228;lt einen ausdr&#252;cklichen Vorausverzicht auf s&#228;mtliche Investitionsersatzanspr&#252;che; soweit Anspr&#252;che nach MRG &#167;10 erfasst werden, ist ein Vorausverzicht gesetzlich unwirksam. M&#246;gliche Anspr&#252;che nach ABGB &#167;1097 h&#228;ngen von Art, Notwendigkeit und Anzeige des konkreten Aufwands ab und k&#246;nnen aus dem Vertrag allein nicht abschlie&#223;end beurteilt werden. Punkt 9.3 verpflichtet unabh&#228;ngig vom tats&#228;chlichen Zustand und von gew&#246;hnlicher Abn&#252;tzung zum wei&#223;en Ausmalen sowie zur Wiederherstellung des &#220;bernahmezustands. Eine solche undifferenzierte Endrenovierungspflicht kann insbesondere als vorformulierte gr&#246;bliche Benachteiligung nach ABGB &#167;879 unwirksam sein; eine Ersatzpflicht besteht nicht allein wegen vertragsgem&#228;&#223;er gew&#246;hnlicher Abn&#252;tzung. Insgesamt weichen die Klauseln erheblich von der zwingenden gesetzlichen Risikoverteilung ab und k&#246;nnen der Mieterseite Kosten auferlegen, die von der Vermieterseite zu tragen w&#228;ren. F&#252;r eine verbindliche rechtliche Einsch&#228;tzung: Mietervereinigung, Rechtsanwalt oder Arbeiterkammer.</p>
+  <h3>Rechtsgrundlage</h3>
+  <p class="refs">MRG &#167;3, MRG &#167;6, MRG &#167;8, MRG &#167;10, ABGB &#167;879, ABGB &#167;1096, ABGB &#167;1097</p>
+</section>
+<section class="card section" id="duties">
+  <div class="section-head">
+    <div><h2>Pflichten und Obliegenheiten</h2><p class="en">Duties</p></div>
+    <span class="badge critical"><span class="icon" aria-hidden="true">!</span>Rot <span class="badge-sub">· high risk</span></span>
+  </div>
+  <h3>Zusammenfassung</h3>
+  <p>Mehrere Pflichten sind sehr weit gefasst: Die Vermieterseite erh&#228;lt ein zeitlich kaum begrenztes Betretungsrecht und einen Wohnungsschl&#252;ssel; Aufrechnung wird vollst&#228;ndig ausgeschlossen; versp&#228;tete R&#252;ckgabe l&#246;st eine verschuldensunabh&#228;ngige, zus&#228;tzlich zum Schaden verlangte Vertragsstrafe aus. Hinzu kommen eine pauschale Zustimmungspflicht f&#252;r geringf&#252;gige Ver&#228;nderungen, eine erst nach Vertragsabschluss bekanntzugebende Hausordnung sowie umfassende Schriftform- und Ersetzungsklauseln. Die Schadenmeldepflicht ist demgegen&#252;ber grunds&#228;tzlich gesetzeskonform, soweit eine Haftung nur bei schuldhafter Pflichtverletzung und verursachtem Folgeschaden eintritt.</p>
+  <h3>Zitat</h3>
+  <blockquote><p>„3.2 Die Mieterseite verpflichtet sich, die Hausordnung einzuhalten. Die Hausordnung wird der Mieterseite nach Vertragsunterzeichnung &#252;bermittelt.“</p>
+<p>„8.4 Sch&#228;den im Mietgegenstand und an den allgemeinen Teilen des Hauses hat die Mieterseite der Vermieterseite unverz&#252;glich zu melden. F&#252;r Folgesch&#228;den aus einer versp&#228;teten Meldung haftet die Mieterseite.“</p>
+<p>„9.1 Jede Ver&#228;nderung des Mietgegenstandes, auch das Anbringen von Bildern, Regalen oder Lampen mittels Bohrungen, bedarf der vorherigen schriftlichen Zustimmung der Vermieterseite.“</p>
+<p>„9.4 Gibt die Mieterseite den Mietgegenstand nicht zum Vertragsende zur&#252;ck, schuldet sie f&#252;r jeden angefangenen Monat eine Konventionalstrafe in H&#246;he von zwei Bruttomonatsmieten, und zwar unabh&#228;ngig von einem Verschulden und zus&#228;tzlich zum Ersatz eines dar&#252;ber hinausgehenden Schadens.“</p>
+<p>„11.1 Die Vermieterseite und von ihr beauftragte Personen d&#252;rfen den Mietgegenstand nach Ank&#252;ndigung von 24 Stunden jederzeit betreten, insbesondere zur Besichtigung durch Kauf- oder Mietinteressenten.“</p>
+<p>„11.2 Die Mieterseite &#252;bergibt der Vermieterseite einen Wohnungsschl&#252;ssel f&#252;r Notf&#228;lle.“</p>
+<p>„12.1 Die Mieterseite verzichtet darauf, gegen Forderungen der Vermieterseite mit eigenen Forderungen aufzurechnen.“</p>
+<p>„15.1 &#196;nderungen und Erg&#228;nzungen dieses Vertrages bed&#252;rfen der Schriftform. M&#252;ndliche Nebenabreden bestehen nicht.“</p>
+<p>„15.2 Sollte eine Bestimmung dieses Vertrages unwirksam sein, gilt eine wirksame Bestimmung als vereinbart, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am n&#228;chsten kommt.“</p></blockquote>
+  <p class="trace ok"><span aria-hidden="true">✓</span> All 9 quoted passages found verbatim in the contract.</p>
+  <h3>Bewertung</h3>
+  <p>Im Vollanwendungsbereich verpflichtet MRG &#167; 8 die Mieterseite, das Betreten aus wichtigen Gr&#252;nden zu gestatten. Punkt 11.1 geht dar&#252;ber hinaus, weil „jederzeit“, eine blo&#223;e Ank&#252;ndigungsfrist von 24 Stunden und Besichtigungen durch Kauf- oder Mietinteressenten ohne Begrenzung nach Anlass, H&#228;ufigkeit und zumutbarer Tageszeit vorgesehen sind. Eine schematische 24-Stunden-Frist ersetzt weder einen wichtigen Grund noch die gebotene Interessenabw&#228;gung. Punkt 11.2 schafft kein ausdr&#252;ckliches Zutrittsrecht, erh&#246;ht aber zusammen mit Punkt 11.1 das Risiko eigenm&#228;chtigen Betretens; ABGB &#167; 1098 sch&#252;tzt den vertragsgem&#228;&#223;en, ungest&#246;rten Gebrauch. Ein Zutritt ohne konkreten Notfall oder Zustimmung l&#228;sst sich daraus nicht ableiten.</p>
+<p>Punkt 8.4 entspricht hinsichtlich der unverz&#252;glichen Meldung erkennbarer Sch&#228;den grunds&#228;tzlich den Duldungs- und Mitwirkungspflichten nach MRG &#167; 8. Die Folgeschadenhaftung ist nach ABGB &#167; 1295 jedoch nur bei rechtswidriger, schuldhafter und kausaler Pflichtverletzung tragf&#228;hig. Da die Klausel Verschulden und Kausalit&#228;t nicht ausdr&#252;cklich ausschlie&#223;t, kann sie gesetzeskonform ausgelegt werden; eine verschuldensunabh&#228;ngige Haftung w&#228;re davon nicht gedeckt.</p>
+<p>Punkt 9.1 unterstellt selbst geringf&#252;gige, gew&#246;hnliche Bohrungen ausnahmslos einer vorherigen Zustimmung. MRG &#167; 9 regelt wesentliche Ver&#228;nderungen des Mietgegenstands und erlaubt keine pauschale Gleichstellung jeder &#252;blichen Befestigung mit einer zustimmungspflichtigen wesentlichen Ver&#228;nderung. Soweit die Klausel auch gew&#246;hnlichen Wohngebrauch erfasst, beschr&#228;nkt sie zus&#228;tzlich das Gebrauchsrecht nach ABGB &#167; 1098 und ist &#252;berschie&#223;end.</p>
+<p>Punkt 9.4 ordnet unabh&#228;ngig vom Verschulden zwei Bruttomonatsmieten je angefangenem Monat sowie zus&#228;tzlichen vollen Schadenersatz an. Nach ABGB &#167; 1336 unterliegen Vertragsstrafen insbesondere der richterlichen M&#228;&#223;igung; die Klausel kann dieses Recht nicht beseitigen. H&#246;he, monatsweise Aufrundung, Verschuldensunabh&#228;ngigkeit und Kumulation erzeugen ein erhebliches Missverh&#228;ltnis und k&#246;nnen nach ABGB &#167; 879 unwirksam sein. Die endg&#252;ltige Beurteilung h&#228;ngt von Dauer, Schaden und Umst&#228;nden der versp&#228;teten R&#252;ckgabe ab und ist aus dem Vertrag allein nicht abschlie&#223;end m&#246;glich.</p>
+<p>Punkt 12.1 enth&#228;lt ein ausnahmsloses Aufrechnungsverbot. Bei einem Verbrauchergesch&#228;ft w&#228;re dies nach KSchG &#167; 6 Abs 1 Z 8 jedenfalls insoweit unwirksam, als Gegenforderungen rechtlich zusammenh&#228;ngen, gerichtlich festgestellt oder anerkannt sind oder bei Zahlungsunf&#228;higkeit des Unternehmers aufgerechnet wird. Ob die Mieterseite tats&#228;chlich als Verbraucher handelt, ist trotz der erkennbaren Wohnnutzung nicht ausdr&#252;cklich festgehalten.</p>
+<p>Punkt 3.2 bindet die Mieterseite an eine bei Vertragsabschluss noch nicht &#252;bergebene Hausordnung. Deren Inhalt, Zumutbarkeit und Einbeziehung k&#246;nnen dem Dokument nicht entnommen werden. Ungew&#246;hnliche oder nachteilige Bestimmungen k&#246;nnen nach ABGB &#167; 864a ohne besonderen Hinweis nicht Vertragsbestandteil werden; gr&#246;blich benachteiligende Inhalte unterliegen ABGB &#167; 879.</p>
+<p>Punkt 15.1 kann eine vereinbarte Schriftform begr&#252;nden, schlie&#223;t sp&#228;tere formlose Individualvereinbarungen aber nicht automatisch aus. Bei Verbrauchereigenschaft kann sich die Vermieterseite nach KSchG &#167; 10 Abs 3 auf eine vereinbarte Form nur unter den dortigen Voraussetzungen berufen. Punkt 15.2 bewirkt keine automatische Ersetzung einer unwirksamen Klausel durch die wirtschaftlich n&#228;chstkommende Regelung; ma&#223;geblich bleiben dispositives Recht und erg&#228;nzende Vertragsauslegung. Eine geltungserhaltende Reduktion unzul&#228;ssiger Klauseln wird dadurch nicht allgemein geschaffen. Wegen der Mehrzahl &#252;berschie&#223;ender und m&#246;glicherweise unwirksamer Pflichten ist die Gesamteinstufung Rot. F&#252;r eine verbindliche rechtliche Einsch&#228;tzung: Mietervereinigung, Rechtsanwalt oder Arbeiterkammer.</p>
+  <h3>Rechtsgrundlage</h3>
+  <p class="refs">MRG &#167;8, MRG &#167;9, ABGB &#167;1098, ABGB &#167;1295, ABGB &#167;1336, ABGB &#167;864a, ABGB &#167;879, KSchG &#167;6 Abs 1 Z 8, KSchG &#167;10 Abs 3</p>
+</section>
+<section class="card section" id="privacy">
+  <div class="section-head">
+    <div><h2>Datenschutz und Privatsph&#228;re</h2><p class="en">Privacy</p></div>
+    <span class="badge critical"><span class="icon" aria-hidden="true">!</span>Rot <span class="badge-sub">· high risk</span></span>
+  </div>
+  <h3>Zusammenfassung</h3>
+  <p>Die Vermieterseite erh&#228;lt eine unwiderruflich formulierte Zustimmung zur Verarbeitung und Weitergabe weitreichender Daten, darunter Bonit&#228;tsdaten und Zahlungsverhalten. Zugleich bestehen umfassende Zutritts-, Schl&#252;ssel- und Nachweispflichten. Die Einwilligung ist wegen des ausgeschlossenen Widerrufs rechtlich problematisch; Zwecke, Empf&#228;nger, Speicherdauer und Betroffenenrechte werden nicht vollst&#228;ndig erl&#228;utert. Das jederzeitige Betretungsrecht nach nur 24 Stunden Ank&#252;ndigung greift &#252;ber den gesetzlichen Duldungsumfang hinaus in die Privatsph&#228;re ein.</p>
+  <h3>Zitat</h3>
+  <blockquote><p>8.3 Die Mieterseite hat die Gastherme j&#228;hrlich auf eigene Kosten durch einen befugten Fachbetrieb &#252;berpr&#252;fen zu lassen und den Pr&#252;fbericht der Vermieterseite unaufgefordert vorzulegen.</p>
+<p>11.1 Die Vermieterseite und von ihr beauftragte Personen d&#252;rfen den Mietgegenstand nach Ank&#252;ndigung von 24 Stunden jederzeit betreten, insbesondere zur Besichtigung durch Kauf- oder Mietinteressenten.</p>
+<p>11.2 Die Mieterseite &#252;bergibt der Vermieterseite einen Wohnungsschl&#252;ssel f&#252;r Notf&#228;lle.</p>
+<p>14.2 Die Mieterseite stimmt zu, dass die Vermieterseite ihre personenbezogenen Daten, einschlie&#223;lich Bonit&#228;tsdaten und Zahlungsverhalten, zu Zwecken der Vertragsverwaltung verarbeitet und an Inkassounternehmen, Banken und Kaufinteressenten der Liegenschaft weitergibt. Diese Zustimmung kann nicht widerrufen werden.</p></blockquote>
+  <p class="trace ok"><span aria-hidden="true">✓</span> All 4 quoted passages found verbatim in the contract.</p>
+  <h3>Bewertung</h3>
+  <p>Punkt 14.2 nennt zwar Datenkategorien, einen allgemeinen Verarbeitungszweck und Empf&#228;ngergruppen, l&#228;sst aber insbesondere konkrete Rechtsgrundlagen, Speicherdauer, Betroffenenrechte und weitere Pflichtinformationen offen. Damit erf&#252;llt der Vertrag f&#252;r sich genommen die Informationspflichten nach DSGVO Art. 13 nicht vollst&#228;ndig. Ob diese Angaben in einer gesonderten Datenschutzerkl&#228;rung erteilt wurden, kann aus dem Dokument nicht bestimmt werden. Soweit die Verarbeitung f&#252;r Vertragsabwicklung oder Forderungseinbringung notwendig ist, kann sie grunds&#228;tzlich auf DSGVO Art. 6 gest&#252;tzt werden; eine pauschale Einwilligung ist daf&#252;r nicht automatisch erforderlich. Die gleichzeitig erfasste Weitergabe von Bonit&#228;ts- und Zahlungsverhaltensdaten an Banken und Kaufinteressenten ist hinsichtlich Erforderlichkeit, Zweckbegrenzung und Datenminimierung nach DSGVO Art. 5 und Art. 6 zu unbestimmt. Der kategorische Ausschluss des Widerrufs widerspricht bei einer auf Einwilligung gest&#252;tzten Verarbeitung DSGVO Art. 7 Abs. 3; zudem bleibt wegen der Verkn&#252;pfung mit dem Mietvertrag zweifelhaft, ob die Einwilligung freiwillig erteilt wird. Dies beeintr&#228;chtigt auch das Grundrecht auf Datenschutz nach DSG &#167; 1. Punkt 8.3 begr&#252;ndet eine Verarbeitung des Pr&#252;fberichts; sie kann zur Dokumentation einer Wartung sachlich gerechtfertigt sein, doch enth&#228;lt der Vertrag keine Angaben zu Umfang, Aufbewahrung und Zugriff. Nach Punkt 11.1 soll ein Betreten nach 24 Stunden Ank&#252;ndigung „jederzeit“ und insbesondere f&#252;r Interessenten m&#246;glich sein. MRG &#167; 8 Abs. 2 verpflichtet den Mieter nur bei wichtigen Gr&#252;nden zur Duldung des Betretens; die pauschale zeitliche und sachliche Ausweitung wahrt diesen Ma&#223;stab sowie den Pers&#246;nlichkeitsschutz nach ABGB &#167; 16 nicht. Punkt 11.2 erlaubt nach seinem Wortlaut nur die Schl&#252;sselverwahrung f&#252;r Notf&#228;lle und keine freie Verwendung; organisatorische Sicherungen und Zugriffsberechtigungen bleiben jedoch ungeregelt. Wegen der unwiderruflichen, weit gefassten Dateneinwilligung und des &#252;berschie&#223;enden Zutrittsrechts liegt ein hohes Privatsph&#228;ren- und Datenschutzrisiko vor. F&#252;r eine verbindliche rechtliche Einsch&#228;tzung: Mietervereinigung, Rechtsanwalt oder Arbeiterkammer.</p>
+  <h3>Rechtsgrundlage</h3>
+  <p class="refs">DSGVO Art. 5, DSGVO Art. 6, DSGVO Art. 7, DSGVO Art. 13, DSG &#167;1, MRG &#167;8, ABGB &#167;16</p>
+</section>
+
+  <section class="card">
+    <details>
+      <summary>Show the fictional contract that was analysed</summary>
+      <pre>FIKTIVER MUSTERVERTRAG – alle Namen, Anschriften und Betr&#228;ge sind erfunden und dienen nur zu Demonstrationszwecken.
+
+M I E T V E R T R A G
+
+abgeschlossen zwischen
+
+Beispiel Wohnbau Verwaltungs GmbH, Mustergasse 3, 1010 Wien,
+kurz Vermieterseite genannt, und
+
+Max Mustermann, geboren am 01.01.1990, derzeit wohnhaft in Probeweg 7, 8010 Graz,
+kurz Mieterseite genannt.
+
+1. Mietgegenstand
+
+1.1 Die Vermieterseite vermietet der Mieterseite die Wohnung Top 9 im dritten Obergeschoss des Hauses Musterstra&#223;e 12, 1070 Wien, samt Zubeh&#246;r. Die Mieterseite mietet und &#252;bernimmt den Mietgegenstand.
+
+1.2 Der Mietgegenstand besteht aus Vorraum, Wohnk&#252;che mit Einbauk&#252;che, zwei Zimmern, Badezimmer mit WC und einem Kellerabteil Nr. 9.
+
+1.3 Das Haus wurde mit Baubewilligung aus dem Jahr 1908 errichtet. Die Nutzfl&#228;che des Mietgegenstandes betr&#228;gt rund 64 m&#178;. Abweichungen der tats&#228;chlichen von der angegebenen Nutzfl&#228;che haben auf diesen Vertrag und den Mietzins keinen Einfluss.
+
+1.4 Die Mieterseite hat den Mietgegenstand besichtigt und &#252;bernimmt ihn im derzeitigen Zustand. Sie verzichtet auf jede weitere Instandsetzung oder Verbesserung durch die Vermieterseite.
+
+2. Vertragsdauer
+
+2.1 Das Mietverh&#228;ltnis beginnt am 01.02.2026 und wird auf drei Jahre abgeschlossen. Es endet am 31.01.2029, ohne dass es einer Aufk&#252;ndigung bedarf.
+
+2.2 Die Mieterseite kann das Mietverh&#228;ltnis nach Ablauf eines Jahres unter Einhaltung einer dreimonatigen K&#252;ndigungsfrist jeweils zum Monatsletzten schriftlich aufk&#252;ndigen.
+
+3. Verwendung des Mietgegenstandes
+
+3.1 Der Mietgegenstand darf nur zu Wohnzwecken verwendet werden. Jede andere Verwendung, insbesondere jede auch nur gelegentliche berufliche Nutzung, wird als K&#252;ndigungsgrund gem&#228;&#223; &#167; 30 Abs 2 Z 13 MRG vereinbart.
+
+3.2 Die Mieterseite verpflichtet sich, die Hausordnung einzuhalten. Die Hausordnung wird der Mieterseite nach Vertragsunterzeichnung &#252;bermittelt.
+
+3.3 Die Mieterseite hat in der Wohnung jede L&#228;rmentwicklung zu unterlassen, auch bei Tag. Jeder Versto&#223; gilt als vereinbarter K&#252;ndigungsgrund gem&#228;&#223; &#167; 30 Abs 2 Z 13 MRG.
+
+4. Mietzins
+
+4.1 Der monatliche Mietzins setzt sich aus dem Hauptmietzins, den anteiligen Betriebskosten und der gesetzlichen Umsatzsteuer zusammen:
+
+Hauptmietzins netto 1.050,00 €
+Umsatzsteuer 10 % 105,00 €
+Hauptmietzins brutto 1.155,00 €
+
+zuz&#252;glich der Betriebskosten-Akontozahlung gem&#228;&#223; Punkt 7.2 von monatlich 170,00 € (inkl. USt).
+
+4.2 Die Vertragsparteien erkl&#228;ren &#252;bereinstimmend, dass der vereinbarte Hauptmietzins angemessen ist. Die Mieterseite verzichtet darauf, den Hauptmietzins &#252;berpr&#252;fen zu lassen.
+
+4.3 Der Mietzins ist monatlich im Voraus bis zum 3. eines jeden Monats auf das Konto der Vermieterseite zu &#252;berweisen. Ma&#223;geblich ist der Eingang auf dem Konto der Vermieterseite.
+
+4.4 Bei Zahlungsverzug schuldet die Mieterseite Verzugszinsen von 9 % pro Jahr sowie f&#252;r jede Mahnung pauschale Mahnspesen von 45,00 € und die Kosten eines Inkassob&#252;ros oder Rechtsanwalts in voller H&#246;he.
+
+4.5 Zahlungen der Mieterseite werden unabh&#228;ngig von ihrer Widmung zuerst auf Kosten und Zinsen, dann auf Betriebskosten und zuletzt auf den Hauptmietzins angerechnet.
+
+4.6 F&#252;r Zeitr&#228;ume, in denen der Mietgegenstand wegen beh&#246;rdlicher Ma&#223;nahmen, Seuchen, Baustellen im Haus oder in der Nachbarschaft nur eingeschr&#228;nkt ben&#252;tzbar ist, kann keine Mietzinsminderung geltend gemacht werden.
+
+5. Wertsicherung
+
+5.1 Der Hauptmietzins ist wertgesichert nach dem Verbraucherpreisindex 2020 der Statistik Austria. Ausgangsbasis ist die f&#252;r den Monat des Vertragsabschlusses verlautbarte Indexzahl.
+
+5.2 Der Hauptmietzins wird j&#228;hrlich zum 1. J&#228;nner an die Ver&#228;nderung des Index angepasst. Eine Verminderung des Index f&#252;hrt zu keiner Senkung des Hauptmietzinses.
+
+5.3 Die Nichteinhebung von Erh&#246;hungsbetr&#228;gen gilt nicht als Verzicht; die Vermieterseite kann nicht eingehobene Erh&#246;hungsbetr&#228;ge f&#252;r die letzten drei Jahre nachfordern.
+
+6. Betriebskosten und Abgaben
+
+6.1 Die Mieterseite tr&#228;gt den auf den Mietgegenstand entfallenden Anteil an den Betriebskosten und laufenden &#246;ffentlichen Abgaben gem&#228;&#223; &#167;&#167; 21 bis 24 MRG.
+
+6.2 Dar&#252;ber hinaus tr&#228;gt die Mieterseite anteilig die Kosten der Hausverwaltung in tats&#228;chlicher H&#246;he, die Kosten der Erneuerung von Fenstern und T&#252;ren der allgemeinen Teile des Hauses sowie eine monatliche Instandhaltungspauschale von 25,00 €.
+
+6.3 Der Anteil der Mieterseite an den Betriebskosten bestimmt sich nach dem Verh&#228;ltnis der Nutzfl&#228;che des Mietgegenstandes zur Nutzfl&#228;che aller Mietgegenst&#228;nde des Hauses.
+
+6.4 Strom, Gas, Internet, Rundfunkgeb&#252;hren und sonstige Verbrauchskosten des Mietgegenstandes tr&#228;gt die Mieterseite selbst. Sie schlie&#223;t die Bezugsvertr&#228;ge im eigenen Namen ab.
+
+7. Betriebskosten-Akontozahlungen
+
+7.1 Die Vermieterseite schreibt die Betriebskosten monatlich als gleichbleibenden Akontobetrag vor. Die Jahresabrechnung erfolgt bis 30. Juni des Folgejahres.
+
+7.2 Der monatliche Akontobetrag betr&#228;gt derzeit 170,00 € (inkl. USt) und ist gemeinsam mit dem Hauptmietzins zu &#252;berweisen. Ein Guthaben aus der Jahresabrechnung wird mit k&#252;nftigen Akontozahlungen verrechnet.
+
+8. Erhaltung und Wartung
+
+8.1 Die Vermieterseite erh&#228;lt die allgemeinen Teile des Hauses nach Ma&#223;gabe der gesetzlichen Bestimmungen.
+
+8.2 Die Mieterseite hat den Mietgegenstand samt allen mitvermieteten Einrichtungen, insbesondere Einbauk&#252;che, Gastherme, Warmwasserbereiter, Fenster, T&#252;ren sowie Elektro-, Gas- und Wasserleitungen, auf eigene Kosten zu warten, instand zu halten und bei Bedarf zu erneuern.
+
+8.3 Die Mieterseite hat die Gastherme j&#228;hrlich auf eigene Kosten durch einen befugten Fachbetrieb &#252;berpr&#252;fen zu lassen und den Pr&#252;fbericht der Vermieterseite unaufgefordert vorzulegen.
+
+8.4 Sch&#228;den im Mietgegenstand und an den allgemeinen Teilen des Hauses hat die Mieterseite der Vermieterseite unverz&#252;glich zu melden. F&#252;r Folgesch&#228;den aus einer versp&#228;teten Meldung haftet die Mieterseite.
+
+8.5 Kommt die Mieterseite ihren Pflichten nach diesem Punkt nicht nach, kann die Vermieterseite die Arbeiten ohne weitere Ank&#252;ndigung auf Kosten der Mieterseite durchf&#252;hren lassen.
+
+9. Ver&#228;nderungen, Investitionen, R&#252;ckgabe
+
+9.1 Jede Ver&#228;nderung des Mietgegenstandes, auch das Anbringen von Bildern, Regalen oder Lampen mittels Bohrungen, bedarf der vorherigen schriftlichen Zustimmung der Vermieterseite.
+
+9.2 Die Mieterseite verzichtet auf den Ersatz s&#228;mtlicher Aufwendungen und Investitionen in den Mietgegenstand, gleich aus welchem Rechtsgrund, insbesondere auch auf Anspr&#252;che nach &#167; 10 MRG.
+
+9.3 Bei Beendigung des Mietverh&#228;ltnisses hat die Mieterseite den Mietgegenstand wei&#223; ausgemalt, fachgerecht gereinigt und in dem Zustand zur&#252;ckzustellen, in dem sie ihn &#252;bernommen hat.
+
+9.4 Gibt die Mieterseite den Mietgegenstand nicht zum Vertragsende zur&#252;ck, schuldet sie f&#252;r jeden angefangenen Monat eine Konventionalstrafe in H&#246;he von zwei Bruttomonatsmieten, und zwar unabh&#228;ngig von einem Verschulden und zus&#228;tzlich zum Ersatz eines dar&#252;ber hinausgehenden Schadens.
+
+10. Untervermietung, Weitergabe, Tierhaltung
+
+10.1 Jede g&#228;nzliche oder teilweise Untervermietung oder sonstige Weitergabe des Mietgegenstandes, entgeltlich oder unentgeltlich, ist untersagt und berechtigt die Vermieterseite zur sofortigen Aufl&#246;sung des Mietverh&#228;ltnisses.
+
+10.2 Die Haltung von Haustieren jeder Art, auch von Kleintieren, ist untersagt.
+
+11. Betreten des Mietgegenstandes
+
+11.1 Die Vermieterseite und von ihr beauftragte Personen d&#252;rfen den Mietgegenstand nach Ank&#252;ndigung von 24 Stunden jederzeit betreten, insbesondere zur Besichtigung durch Kauf- oder Mietinteressenten.
+
+11.2 Die Mieterseite &#252;bergibt der Vermieterseite einen Wohnungsschl&#252;ssel f&#252;r Notf&#228;lle.
+
+12. Aufrechnung
+
+12.1 Die Mieterseite verzichtet darauf, gegen Forderungen der Vermieterseite mit eigenen Forderungen aufzurechnen.
+
+13. Kaution
+
+13.1 Die Mieterseite &#252;bergibt bei Vertragsunterzeichnung eine Barkaution in H&#246;he von sechs Bruttomonatsmieten, das sind 7.950,00 €.
+
+13.2 Die Kaution wird nicht verzinst und dient der Sicherung aller Anspr&#252;che der Vermieterseite aus diesem Vertrag.
+
+13.3 Die Vermieterseite gibt die Kaution innerhalb von sechs Monaten nach R&#252;ckgabe des Mietgegenstandes zur&#252;ck, soweit sie nicht f&#252;r Forderungen der Vermieterseite herangezogen wird.
+
+14. Kosten und Datenschutz
+
+14.1 Die Kosten der Vertragserrichtung von 480,00 € sowie eine Bearbeitungsgeb&#252;hr von 150,00 € tr&#228;gt die Mieterseite.
+
+14.2 Die Mieterseite stimmt zu, dass die Vermieterseite ihre personenbezogenen Daten, einschlie&#223;lich Bonit&#228;tsdaten und Zahlungsverhalten, zu Zwecken der Vertragsverwaltung verarbeitet und an Inkassounternehmen, Banken und Kaufinteressenten der Liegenschaft weitergibt. Diese Zustimmung kann nicht widerrufen werden.
+
+15. Sonstige Bestimmungen
+
+15.1 &#196;nderungen und Erg&#228;nzungen dieses Vertrages bed&#252;rfen der Schriftform. M&#252;ndliche Nebenabreden bestehen nicht.
+
+15.2 Sollte eine Bestimmung dieses Vertrages unwirksam sein, gilt eine wirksame Bestimmung als vereinbart, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am n&#228;chsten kommt.
+
+15.3 Der Energieausweis wurde der Mieterseite vor Vertragsunterzeichnung vorgelegt und ausgeh&#228;ndigt.
+
+Wien, am 15.01.2026
+
+Beispiel Wohnbau Verwaltungs GmbH (Vermieterseite)
+
+Max Mustermann (Mieterseite)
+</pre>
+    </details>
+  </section>
+</main>
+<footer>
+  <p>Generated on 25 November 2026 from one stored run of the evaluation tool (GraphProfile mode, gpt-5.6-sol, reasoning effort low, analysis code 744fb3d). The quote check is the evaluation tool's deterministic quote traceability.</p>
+</footer>
+</div>
+</body>
+</html>
