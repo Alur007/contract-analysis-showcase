@@ -88,11 +88,6 @@ Failed sections are counted and left out of the scores, instead of being scored 
 - The main judge, gemini-4-hydrogen, comes from a different provider than both models it scored. A second judge, gpt-6.2-astra, re-scored gpt-5.6-sol as a cross-check and was much stricter: full marks for legal references in 17% of sections, against 70% from the main judge. Judge scores are therefore compared only within one judge.
 - Each judge runs in two variants, independent and with the expected references shown, and they are never averaged. The reference list raised the legal-reference scores of every model; the means of the other two dimensions moved by at most 0.17 points.
 
-**Selected results** (details and caveats in the report):
-- **Grounding matters.** In the earlier thesis evaluation, retrieving the legal references raised GPT-4.1's core coverage from 60% (prompt only) to 93% (knowledge graph). The coverage metric expects exactly the references the graph provides, so part of that rise is by construction.
-- **Coverage is not correctness.** Among five current models, Inkling 2 Small cited the expected references most often (98.8% vs 95.4% for gpt-5.6-sol). Yet the judge found nothing to fault in its legal references in only 22% of sections, against 70% for gpt-5.6-sol.
-- **Judges differ.** A second judge scored the same runs much more strictly, so judge scores are compared only within one judge.
-
 ## Limitations
 
 - Small set of contracts and number of repeats per model.
