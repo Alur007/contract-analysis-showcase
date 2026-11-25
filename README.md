@@ -1,11 +1,12 @@
-## Contract analysis for Austrian rental law
+# Contract analysis for Austrian rental law
 
 An AI assistant that checks Austrian residential rental contracts clause by clause against the applicable tenancy law, grounded in curated legal references, together with an evaluation that measures how well different language models do this.
 
 By Alena Urbel · started as my bachelor's thesis in Business Informatics (FH Vorarlberg, 2026), since extended into a standalone application and a model evaluation tool.
 
-See a sample assessment: a fictional rental contract, analysed by the application with gpt-5.6-sol and shown unedited, in German.
-Open the evaluation report: how well five current models perform the analysis, with interactive charts.
+**[See a sample assessment](https://alur007.github.io/contract-analysis-showcase/sample.html)**: a fictional rental contract, analysed by the application with gpt-5.6-sol and shown unedited, in German.
+
+**[Open the evaluation report](https://alur007.github.io/contract-analysis-showcase/)**: how well five current models perform the analysis, with interactive charts.
 
 This is a prototype, not legal advice.
 
@@ -85,23 +86,23 @@ Failed sections are counted and left out of the scores, instead of being scored 
 **LLM judge:**
 - Scores each section from 0 to 2 for legal references, clause citation and reasoning (IRAC). The report also gives the share of sections with the full score, since the rubric levels are ordinal.
 - The main judge, gemini-4-hydrogen, comes from a different provider than both models it scored. A second judge, gpt-6.2-astra, re-scored gpt-5.6-sol as a cross-check and was much stricter: full marks for legal references in 17% of sections, against 70% from the main judge. Judge scores are therefore compared only within one judge.
-- Each judge runs in two variants, independent and with the expected references shown, and they are never averaged. The reference list raised the legal-reference - scores of every model; the means of the other two dimensions moved by at most 0.17 points..
+- Each judge runs in two variants, independent and with the expected references shown, and they are never averaged. The reference list raised the legal-reference scores of every model; the means of the other two dimensions moved by at most 0.17 points.
 
 **Selected results** (details and caveats in the report):
 - **Grounding matters.** In the earlier thesis evaluation, retrieving the legal references raised GPT-4.1's core coverage from 60% (prompt only) to 93% (knowledge graph). The coverage metric expects exactly the references the graph provides, so part of that rise is by construction.
 - **Coverage is not correctness.** Among five current models, Inkling 2 Small cited the expected references most often (98.8% vs 95.4% for gpt-5.6-sol). Yet the judge found nothing to fault in its legal references in only 22% of sections, against 70% for gpt-5.6-sol.
 - **Judges differ.** A second judge scored the same runs much more strictly, so judge scores are compared only within one judge.
 
-## Limitations:
+## Limitations
 
-Small set of contracts and number of repeats per model.
-The judges' legal findings have not yet been approved by a lawyer.
-The current models ran at different temperatures (0 on Nebius, 1 for the OpenAI models, which accept no other value).
-Coverage in graph mode is partly by construction (see above). The graph covers the MRG scopes; it has no profiles for limited-profit housing (WGG) contracts.
+- Small set of contracts and number of repeats per model.
+- The judges' legal findings have not yet been approved by a lawyer.
+- The current models ran at different temperatures (0 on Nebius, 1 for the OpenAI models, which accept no other value).
+- Coverage in graph mode is partly by construction (see above). The graph covers the MRG scopes; it has no profiles for limited-profit housing (WGG) contracts.
 
 ## Source code
 
-The application and the evaluation tool are in a private repository. I'm happy to walk through the code, including the architecture and characterization tests: www.linkedin.com/in/alena-urbel
+The application and the evaluation tool are in a private repository. I'm happy to walk through the code, including the architecture and characterization tests: [linkedin.com/in/alena-urbel](https://www.linkedin.com/in/alena-urbel)
 
 
 ## Tech stack
