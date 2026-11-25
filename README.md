@@ -17,6 +17,18 @@ General-purpose language models are unreliable on legal questions. In a 2024 stu
 
 This is a portfolio prototype, not legal advice.
 
+## Sample legal assessment
+
+**[Open the sample assessment](https://alur007.github.io/contract-analysis-showcase/sample.html)**: a fictional rental contract with deliberately one-sided clauses, analysed by the application with gpt-5.6-sol and shown unedited, in German.
+
+It rates all six sections and the contract as a whole red (high risk). Among its findings:
+- a deposit that earns no interest, contrary to § 16b MRG;
+- a void waiver of the tenant's claims for improvements (§ 10 MRG);
+- maintenance duties shifted from the landlord to the tenant;
+- an irrevocable consent to passing on personal data.
+
+All 57 quoted passages occur verbatim in the contract, as checked by the evaluation tool. This is a single run; the evaluation shows how consistent the model is across repeats.
+
 ## Architecture: a layered monolith with clean dependencies
 
 One deployable ASP.NET Core application, split into layers whose dependencies point only inwards. Business logic does not know about the web, the database or the AI provider.
