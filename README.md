@@ -1,6 +1,6 @@
 # Contract analysis for Austrian rental law
 
-An AI assistant that checks Austrian residential rental contracts clause by clause against the applicable tenancy law, grounded in curated legal references, together with an evaluation that measures how well different language models do this.
+An AI assistant that analyzes Austrian residential rental contracts clause by clause against the applicable tenancy law, grounded in curated legal references, together with an evaluation that measures how well different language models perform.
 
 By Alena Urbel · started as my bachelor's thesis in Business Informatics (FH Vorarlberg, 2026), since extended into a standalone application and a model evaluation tool.
 
@@ -17,7 +17,7 @@ Three real rental contracts, repeated runs per model. Details, spreads and cavea
 1. Curated legal context did most of the work; the graph added little. In the thesis evaluation (GPT-4.1), core reference coverage rose from 60% with the prompt alone to 89% with curated legal-context files, and to 93% with retrieval from the Neo4j graph. Part of the last step is by construction: the graph returns exactly the references the coverage metric expects. The thesis judge saw only a small gain in legal references (1.11 → 1.22 → 1.22 on a 0–2 scale), and its overall score did not improve, because clause-citation scores fell.
 2. Citing the right law is not the same as applying it. Of the two current models the judge scored, Inkling-2-Small cited more of the expected references (98.8% vs 95.4% for gpt-5.6-sol). Yet the judge found nothing to fault in its legal references in 22% of sections, against 70% for gpt-5.6-sol. Ranked by coverage and ranked by the judge, the two models come out in opposite order.
 3. Temperature 1 did not cost consistency here. gpt-5.6-sol and gpt-6.1-sol, which accept only temperature 1, gave every section the same risk level in every repeat (100%). The three models run at temperature 0 reached 50–89%. With three contracts and three repeats each, this is an observation, not a general result.
-4. Models rarely quote verbatim. Depending on the model, only 41–70% of quoted clauses occur in full in the contract, while 87–95% of their individual passages do. Models join clauses from different sections or change a word, so highlighting a quote in the original document has to work passage by passage.
+4. Models rarely quote verbatim. Every passage could be located for 41–70% of quote blocks. Across the benchmark, 87–95% of individual passages could be located. Models join clauses from different sections or change a word, so highlighting a quote in the original document has to work passage by passage.
 
 ## The problem
 
