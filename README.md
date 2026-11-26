@@ -44,6 +44,8 @@ It rates all six sections and the contract as a whole red (high risk). Among its
 
 All 57 quoted passages occur verbatim in the contract, as checked by the evaluation tool. This is a single run; the evaluation shows how consistent the model is across repeats.
 
+Spot check: the assessment applies a recent change in the law correctly. For leases concluded from 1 January 2026, a fixed term with a business landlord must be at least five years; a shorter term is invalid and the tenancy becomes open-ended. The knowledge graph pointed the model to the right provision (MRG §29); the five-year rule itself came from the model, not from the curated references.
+
 ## Architecture: a layered monolith with clean dependencies
 
 One deployable ASP.NET Core application, split into layers whose dependencies point only inwards. Business logic does not know about the web, the database or the AI provider.
